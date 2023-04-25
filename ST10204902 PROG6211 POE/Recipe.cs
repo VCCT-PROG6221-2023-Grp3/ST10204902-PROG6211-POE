@@ -33,7 +33,7 @@
         public void addIngredientToArray(Ingredient item)
         {
             arrIngredients[ingredientCount] = item;
-            ingredientCount++;
+            this.ingredientCount=ingredientCount+1;
         }
         
 
@@ -52,11 +52,13 @@
 
         public void setNumIngredients(int inNumIngredients)
         {
+            arrIngredients = new Ingredient[inNumIngredients];
             numIngredients = inNumIngredients;
         }
 
         public void setNumSteps(int inNumSteps)
         {
+            arrSteps = new string[inNumSteps];
             numSteps = inNumSteps; 
         }
         /*The user shall be able to enter the details for a single recipe:

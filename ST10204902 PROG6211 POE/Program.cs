@@ -78,17 +78,26 @@ namespace ST10204902_PROG6211_POE
             Console.WriteLine("4) Triple the recipe");
             Console.Write("\nEnter your option selection: ");
             int option = Validation.validateOption(Console.ReadLine());
+            
+            //duplicate the original recipe to a new object
+            Recipe r2 = r;
 
+            //multiply the recipe values
             r.multiplyRecipe(option);
             Console.WriteLine(r.toString());
 
+            Console.WriteLine("\nWould you like to return to the original recipe values? (yes/no)");
+            string confirmClear = Validation.validateString(Console.ReadLine());
+            confirmClear = Validation.returnYesNo(confirmClear);
+
             //prompt the user to clear the recipe
             Console.WriteLine("\nWould you like to clear the recipe? (yes/no)");
-            string confirmClear = Validation.validateString(Console.ReadLine());
+            confirmClear = Validation.validateString(Console.ReadLine());
             confirmClear = Validation.returnYesNo(confirmClear);
             if (confirmClear.Equals("yes"))
             {
                 r.clear();
+                r2.clear();
             }
             Console.WriteLine(r.toString());
             Console.WriteLine("Press any key to exit...");

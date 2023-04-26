@@ -17,14 +17,23 @@ namespace ST10204902_PROG6211_POE
         //Accepts a string and returns a double if the value is of the correct type
         public static double validateDouble(string input)
         {
-            double value;
-            while(double.TryParse(input, out value) == false)
+            double value=0;
+            try
             {
-                Console.WriteLine("\nPlease ensure your input is of the correct type.");
-                Console.WriteLine("Enter a number: ");
-                input = Console.ReadLine();
+                while (double.TryParse(input, out value) == false)
+                {
+                    Console.WriteLine("\nPlease ensure your input is of the correct type.");
+                    Console.WriteLine("Enter a number: ");
+                    input = Console.ReadLine();
+                }
             }
-            
+            catch (OverflowException e) //ensure number is between correct values
+            {
+                Console.WriteLine("Error occurred, number is too large or too small");
+                Console.WriteLine("Please ensure the value is between " + Double.MinValue + " and " + Double.MaxValue);
+                Console.WriteLine("Enter a number:");
+                validateDouble(input);
+            }
             return value;
         }
 
@@ -44,14 +53,33 @@ namespace ST10204902_PROG6211_POE
         //Accepts a string and returns an integer if the value is of the correct type
         public static int validateInt(string input)
         {
-            int value;
-            while(int.TryParse(input, out value)==false) 
+            int value=0;
+            try
             {
-                Console.WriteLine("\nPlease ensure your input is of the correct type.");
-                Console.WriteLine("Enter a number");
-                input = Console.ReadLine();
+                while (int.TryParse(input, out value) == false)
+                {
+                    /*Console.WriteLine("\nPlease ensure your input is of the correct type.");
+                    Console.WriteLine("Also ensure the number is not negative or 0");
+                    Console.WriteLine("Enter a number");*/
+
+                    Console.WriteLine("Error occurred, number is too large or too small");
+                    Console.WriteLine("Please ensure the value is between " + Int32.MinValue + " and " + Int32.MaxValue);
+                    Console.WriteLine("Enter a number:");
+                    input = Console.ReadLine();
+                }
+                
             }
-            
+            catch (OverflowException e)//ensure number is between correct values
+            {
+                
+                validateInt(input);
+            }
+        
+            if(value<=0)
+            {
+                validateInt(input);
+            }
+
             return value;
         }
 

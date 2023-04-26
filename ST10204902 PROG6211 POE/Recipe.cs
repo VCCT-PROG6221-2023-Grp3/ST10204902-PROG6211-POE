@@ -1,4 +1,6 @@
-﻿namespace ST10204902_PROG6211_POE
+﻿using System.Windows.Markup;
+
+namespace ST10204902_PROG6211_POE
 {
 
     public class Recipe
@@ -36,6 +38,17 @@
             this.ingredientCount=ingredientCount+1;
         }
         
+        //removes
+        public void clear()
+        {
+            arrIngredients = null;
+            arrSteps = null;
+            numIngredients=0;
+            numSteps=0;
+            ingredientCount=0;
+            stepCount=0;
+        }
+
 
         //Getter methods
         public int getNumIngredients() {  return numIngredients; }
@@ -61,12 +74,35 @@
             arrSteps = new string[inNumSteps];
             numSteps = inNumSteps; 
         }
-        /*The user shall be able to enter the details for a single recipe:
-a. The number of ingredients.
-b. For each ingredient: the name, quantity, and unit of measurement. For example, one
-tablespoon of sugar.
-c. The number of steps.
-d. For each step: a description of what the user should do*/
+
+
+        public void multiplyRecipe(int option)
+        { 
+            switch (option)
+            {
+                //halve the quantity of ingredients
+                case 2:
+                    for (int i = 0; i<numIngredients;i++)
+                    {
+                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity()*0.5);
+                    }
+                    break;
+                //double the quantity of ingredients
+                case 3:
+                    for (int i = 0; i < numIngredients; i++)
+                    {
+                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity() * 2);
+                    }
+                    break;
+                //triple the quantity of ingredients
+                case 4:
+                    for (int i = 0; i < numIngredients; i++)
+                    {
+                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity() * 3);
+                    }
+                    break;
+            }
+        }
 
         //Custom toString that returns a formatted list within the recipe
         public string toString()

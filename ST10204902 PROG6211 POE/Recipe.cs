@@ -115,7 +115,7 @@ namespace ST10204902_PROG6211_POE
             {
                 temp += "\n - Ingredient "+(i+1) + ": " +  arrIngredients[i].printIngredient();
             }
-            temp += "___________________________________";
+            temp += "\n___________________________________";
             temp += "\nSteps:";
             for (int i = 0;i<numSteps; i++)
             {

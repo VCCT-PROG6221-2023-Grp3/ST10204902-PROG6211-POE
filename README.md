@@ -1,7 +1,5 @@
 # ST10204902 PROG6211 POE
 
-##Recipe App Readme
-
 [Github](https://github.com/VCCT-PROG6221-2023-Grp3/ST10204902-PROG6211-POE)
 
 ## 1. Description and How to Use.

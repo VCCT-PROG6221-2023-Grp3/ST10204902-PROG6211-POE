@@ -26,6 +26,7 @@ namespace ST10204902_PROG6211_POE
         //default constructor to allow building during testing
         public Recipe() 
         {
+
         }
         //Custom adder method to streamline data input in main program
 
@@ -38,7 +39,7 @@ namespace ST10204902_PROG6211_POE
             this.ingredientCount=ingredientCount+1;
         }
         
-        //removes
+        //Resets the values of the Recipe object
         public void clear()
         {
             arrIngredients = null;
@@ -80,21 +81,21 @@ namespace ST10204902_PROG6211_POE
         { 
             switch (option)
             {
-                //halve the quantity of ingredients
+                //Halve the quantity of ingredients
                 case 2:
                     for (int i = 0; i<numIngredients;i++)
                     {
                         arrIngredients[i].setQuantity(arrIngredients[i].getQuantity()*0.5);
                     }
                     break;
-                //double the quantity of ingredients
+                //Double the quantity of ingredients
                 case 3:
                     for (int i = 0; i < numIngredients; i++)
                     {
                         arrIngredients[i].setQuantity(arrIngredients[i].getQuantity() * 2);
                     }
                     break;
-                //triple the quantity of ingredients
+                //Triple the quantity of ingredients
                 case 4:
                     for (int i = 0; i < numIngredients; i++)
                     {
@@ -107,13 +108,15 @@ namespace ST10204902_PROG6211_POE
         //Custom toString that returns a formatted list within the recipe
         public string toString()
         {
-            string temp = "";
-
+            string temp = "\t\tRecipe";
+            temp += "\n___________________________________";
+            temp += "\nIngredients";
             for (int i  = 0; i < numIngredients; i++)
             {
                 temp += "\n - Ingredient "+(i+1) + ": " +  arrIngredients[i].printIngredient();
             }
-
+            temp += "___________________________________";
+            temp += "\nSteps:";
             for (int i = 0;i<numSteps; i++)
             {
                 temp += "\nStep " + (i+1) + ": " + arrSteps[i];

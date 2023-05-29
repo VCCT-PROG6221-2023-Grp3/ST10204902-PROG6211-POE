@@ -14,21 +14,21 @@ namespace ST10204902_PROG6211_POE
         private string name;
         private double quantity;
         private string unitOfMeasurement;
+        private int calories;
+        private string foodGroup;
 
-        //Accessor methods
-        public string getName()  {return name;}
-        public double getQuantity() { return quantity; }
-        public string getUnitOfMeasurement() {  return unitOfMeasurement;}
+        //Getters and Setters
+        public string Name { get => name; set => name = value; }
+        public double Quantity { get => quantity; set => quantity = value; }
+        public string UnitOfMeasurement { get => unitOfMeasurement; set => unitOfMeasurement = value; }
+        public int Calories { get => calories; set => calories = value; }
+        public string FoodGroup { get => foodGroup; set => foodGroup = value; }
 
-        //Mutator methods
-        public void setName(string name) { this.name = name;}
-        public void setQuantity(double quantity) {  this.quantity = quantity;}
-        public void setUnitOfMeasurement(string unitOfMeasurement) { this.unitOfMeasurement = unitOfMeasurement;}
 
         //Custom method to return a formatted ingredient sentence
         public string printIngredient()
         { 
-            return this.quantity + " " +this.unitOfMeasurement + " of " + this.name;
+            return Quantity + " " +UnitOfMeasurement + " of " + Name;
         }
     }
 }

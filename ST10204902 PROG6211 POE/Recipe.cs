@@ -1,128 +1,104 @@
-﻿using System.Windows.Markup;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ST10204902_PROG6211_POE
 {
-
-    public class Recipe
+    internal class Recipe
     {
-        //Variables
-        private int numIngredients;
-        private int numSteps;
-        private Ingredient[] arrIngredients;
-        private string[] arrSteps;
-        private int ingredientCount=0;
-        private int stepCount = 0;
+        //Variable declaration
+        String name;
+        List<Ingredient> ingredients;
+        List<String> steps;
 
-        //Parameterised constructor that accepts two integers that represent the length of the ingredient array and length of the steps array
-        //The constructor also sets the local variables of numIngredients and numSteps to the variables in the parameter
-        public Recipe(int inNumIngredients, int inNumSteps)
+        //Getters and Setters
+        public string Name { get => name; set => name = value; }
+        public List<Ingredient> Ingredients { get => ingredients; set => ingredients = value; }
+        public List<string> Steps { get => steps; set => steps = value; }
+
+        //parameterised constructor that accepts a name for the recipe, a List of ingredients that is generated in the main class then passed,
+        //and a List of steps that is generated in the main class
+        public Recipe(string name, List<Ingredient> ingredients, List<string> steps)
         {
-            arrIngredients = new Ingredient[inNumIngredients];
-            arrSteps = new string[inNumSteps];
-            numIngredients= inNumIngredients;
-            numSteps = inNumSteps;
+            this.name = name;
+            this.ingredients = ingredients;
+            this.steps = steps;
         }
 
-        //default constructor to allow building during testing
-        public Recipe() 
+        //default constructor
+        public Recipe()
         {
-
-        }
-        //Custom adder method to streamline data input in main program
-
-        //Adder method for arrIngredient
-        //Accepts an Ingredient object, stores it in the array then increments the counter by 1
-
-        public void addIngredientToArray(Ingredient item)
-        {
-            arrIngredients[ingredientCount] = item;
-            this.ingredientCount=ingredientCount+1;
-        }
-        
-        //Resets the values of the Recipe object
-        public void clear()
-        {
-            arrIngredients = null;
-            arrSteps = null;
-            numIngredients=0;
-            numSteps=0;
-            ingredientCount=0;
-            stepCount=0;
         }
 
-
-        //Getter methods
-        public int getNumIngredients() {  return numIngredients; }
-
-        public int getNumSteps() { return numSteps; }
-
-        public Ingredient[] getIngredientArr() { return arrIngredients; }
-        public string[] getStepsArr() { return arrSteps; }
-
-
-        //Setter methods
-
-        public void setStepsArr(string[] steps) { arrSteps = steps; }
-
-        public void setNumIngredients(int inNumIngredients)
+        public void multiplyRecipe(int option) //Scaling needs to be done in program.cs before committing to this method.
         {
-            arrIngredients = new Ingredient[inNumIngredients];
-            numIngredients = inNumIngredients;
-        }
-
-        public void setNumSteps(int inNumSteps)
-        {
-            arrSteps = new string[inNumSteps];
-            numSteps = inNumSteps; 
-        }
-
-
-        public void multiplyRecipe(int option)
-        { 
-            switch (option)
+            switch(option)
             {
-                //Halve the quantity of ingredients
+                //ASK ABOUT THIS
                 case 2:
-                    for (int i = 0; i<numIngredients;i++)
+                    foreach (Ingredient ingredient in ingredients)
                     {
-                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity()*0.5);
+                        Ingredient temp = ingredient;
+                        temp.Quantity = temp.Quantity * 0.5;
+                        temp.Calories = temp.Calories * 0.5;
+                        ingredients.Remove(ingredient);
+                        ingredients.Add(temp);
                     }
                     break;
-                //Double the quantity of ingredients
                 case 3:
-                    for (int i = 0; i < numIngredients; i++)
+                    foreach (Ingredient ingredient in ingredients)
                     {
-                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity() * 2);
+                        Ingredient temp = ingredient;
+                        temp.Quantity = temp.Quantity * 2;
+                        temp.Calories = temp.Calories * 2;
+                        ingredients.Remove(ingredient);
+                        ingredients.Add(temp);
                     }
                     break;
-                //Triple the quantity of ingredients
-                case 4:
-                    for (int i = 0; i < numIngredients; i++)
+                    case 4:
+                    foreach (Ingredient ingredient in ingredients)
                     {
-                        arrIngredients[i].setQuantity(arrIngredients[i].getQuantity() * 3);
+                        Ingredient temp = ingredient;
+                        temp.Quantity = temp.Quantity * 3;
+                        temp.Calories = temp.Calories * 3;
+                        ingredients.Remove(ingredient);
+                        ingredients.Add(temp);
                     }
                     break;
             }
         }
 
-        //Custom toString that returns a formatted list within the recipe
+        public double calculateTotalCalories()
+        { 
+            double total = 0;
+            foreach (Ingredient ingredient in ingredients)
+            {
+                total += ingredient.Calories;
+            }
+            return total;
+        }
+
         public string toString()
         {
-            string temp = "\t\tRecipe";
+            string temp = "\t\tRecipe: " +name;
             temp += "\n___________________________________";
-            temp += "\nIngredients";
-            for (int i  = 0; i < numIngredients; i++)
+            temp += "\nIngredients \t\t\t\t| Calories \t\t\t| Food Group";
+            foreach (Ingredient ingredient in ingredients)
             {
-                temp += "\n - Ingredient "+(i+1) + ": " +  arrIngredients[i].printIngredient();
+                temp += " - " + ingredient.printIngredient();
             }
             temp += "\n___________________________________";
             temp += "\nSteps:";
-            for (int i = 0;i<numSteps; i++)
+            int i = 0;
+            foreach(string step in Steps)
             {
-                temp += "\nStep " + (i+1) + ": " + arrSteps[i];
+                i++;
+                temp += "\nStep " + i + ": " + step;
             }
-
-
             return temp;
         }
     }

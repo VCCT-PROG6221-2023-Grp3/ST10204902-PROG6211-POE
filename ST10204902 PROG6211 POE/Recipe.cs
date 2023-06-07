@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ST10204902_PROG6211_POE
 {
-    internal class Recipe
+    public class Recipe
     {
         //Variable declaration
         String name;
@@ -34,13 +34,14 @@ namespace ST10204902_PROG6211_POE
         {
         }
 
-        public void multiplyRecipe(int option) //Scaling needs to be done in program.cs before committing to this method.
+        public void multiplyRecipe(int option) 
         {
+            
             switch(option)
             {
-                //ASK ABOUT THIS
+                
                 case 2:
-                    foreach (Ingredient ingredient in ingredients)
+                    foreach (Ingredient ingredient in ingredients.ToList())
                     {
                         Ingredient temp = ingredient;
                         temp.Quantity = temp.Quantity * 0.5;
@@ -50,7 +51,7 @@ namespace ST10204902_PROG6211_POE
                     }
                     break;
                 case 3:
-                    foreach (Ingredient ingredient in ingredients)
+                    foreach (Ingredient ingredient in ingredients.ToList())
                     {
                         Ingredient temp = ingredient;
                         temp.Quantity = temp.Quantity * 2;
@@ -60,7 +61,7 @@ namespace ST10204902_PROG6211_POE
                     }
                     break;
                     case 4:
-                    foreach (Ingredient ingredient in ingredients)
+                    foreach (Ingredient ingredient in ingredients.ToList())
                     {
                         Ingredient temp = ingredient;
                         temp.Quantity = temp.Quantity * 3;
@@ -79,19 +80,20 @@ namespace ST10204902_PROG6211_POE
             {
                 total += ingredient.Calories;
             }
+            
             return total;
         }
 
         public string toString()
         {
-            string temp = "\t\tRecipe: " +name;
-            temp += "\n___________________________________";
-            temp += "\nIngredients \t\t\t\t| Calories \t\t\t| Food Group";
+            string temp = "Recipe: " +name;
+            temp += "\n______________________________________________________________________________________________________________________________";
+            temp += "\nIngredients \t\t\t\t| Calories \t\t| Food Group";
             foreach (Ingredient ingredient in ingredients)
             {
-                temp += " - " + ingredient.printIngredient();
+                temp += "\n - " + ingredient.printIngredient();
             }
-            temp += "\n___________________________________";
+            temp += "\n______________________________________________________________________________________________________________________________";
             temp += "\nSteps:";
             int i = 0;
             foreach(string step in Steps)

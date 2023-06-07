@@ -28,7 +28,7 @@ namespace ST10204902_PROG6211_POE
         //Custom method to return a formatted ingredient sentence
         public string printIngredient()
         { 
-            return Quantity + " " +UnitOfMeasurement + " of " + Name + "\t|\t" +Calories + "\t|\t" + FoodGroup;
+            return Quantity + " " +UnitOfMeasurement + " of " + Name + "\t\t\t| " +Calories + "\t\t\t| " + FoodGroup;
         }
     }
 }

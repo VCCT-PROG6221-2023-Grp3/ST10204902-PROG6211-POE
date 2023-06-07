@@ -62,7 +62,7 @@ namespace ST10204902_PROG6211_POE
                 validateInt(input);
             }
 
-            if (value <= 0)
+            if (value < 0)
             {
                 validateInt(input);
             }
@@ -89,7 +89,7 @@ namespace ST10204902_PROG6211_POE
         {
             int test = Validation.validateInt(input);
 
-            while (test <= 1 && test >= 4)
+            while (test < 1 || test > 4)
             {
                 Console.WriteLine("\nInvalid option entered, please try again");
                 test = Validation.validateInt(Console.ReadLine());

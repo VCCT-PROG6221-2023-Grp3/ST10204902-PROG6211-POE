@@ -58,6 +58,9 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
+        //View a sorted list of all recipes
+        //User can exit by entering 0 or continue by selecting a recipe number
+        //Once a recipe number is entered, the user is redirected to that specific recipe menu
         private static void ViewRecipeMenu()
         {
             SortRecipes();
@@ -97,7 +100,10 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
-        private static void ViewRecipe(Recipe recipe, int recipeSelectedNum)
+        //view recipe menu
+        //prints a prompt and accepts a validated option from the user
+        //dependent on the option selected. user will be redirected to a new prompt
+        private static void ViewRecipe(Recipe recipe, int recipeSelectedNum) 
         {
             Console.Clear();
             delCalorieWarning cl = new delCalorieWarning(CalorieWarning);
@@ -169,6 +175,7 @@ namespace ST10204902_PROG6211_POE
             string confirmClear = Validation.validateString(Console.ReadLine());
             confirmClear = Validation.returnYesNo(confirmClear);
 
+            //prompts user to return to original values. if yes, return to original. else new values
             if(confirmClear.Equals("yes"))
             {
                 Console.WriteLine("Waiting here");
@@ -179,7 +186,7 @@ namespace ST10204902_PROG6211_POE
             }
             else
             {
-                Recipes.Remove(r);
+                RemoveRecipe(r);
                 Recipes.Add(recipeNewQuantity);
 
                 Console.WriteLine("Waitinng there");
@@ -189,13 +196,20 @@ namespace ST10204902_PROG6211_POE
             }
 
         }
+        //Sorts the recipes list alphabetically using a compareto delegate
         private static void SortRecipes()
         {
             Recipes.Sort(delegate (Recipe x, Recipe y) { return x.Name.CompareTo(y.Name); });
         }
 
+        //Removes a recipe from the recipes 
         private static void RemoveRecipe(Recipe recipe)
-        { Recipes.Remove(recipe); }
+        { 
+            Recipes.Remove(recipe); 
+        }
+        
+        //Transferred recipe prompts from POE part 1
+        //User enters all necessary details
         private static void AddRecipe()
         {
             Console.Clear();
@@ -290,6 +304,7 @@ namespace ST10204902_PROG6211_POE
             Console.Clear();
         }
 
+        //If the recipe exceeds 300 calories, the user is prompted
         public static void CalorieWarning(Recipe r)
         {
             if(r.calculateTotalCalories()>300)

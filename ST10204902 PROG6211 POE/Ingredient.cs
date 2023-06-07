@@ -17,6 +17,21 @@ namespace ST10204902_PROG6211_POE
         private double calories;
         private string foodGroup;
 
+        public Ingredient(string name, double quantity, string unitOfMeasurement, double calories, string foodGroup)
+        {
+            this.name = name;
+            this.quantity = quantity;
+            this.unitOfMeasurement = unitOfMeasurement;
+            this.calories = calories;
+            this.foodGroup = foodGroup;
+        }
+
+        public Ingredient()
+        {
+        }
+
+
+
         //Getters and Setters
         public string Name { get => name; set => name = value; }
         public double Quantity { get => quantity; set => quantity = value; }

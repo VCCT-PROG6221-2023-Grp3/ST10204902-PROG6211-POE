@@ -70,6 +70,18 @@ namespace ST10204902_PROG6211_POE
             return value;
         }
 
+        //accepts an integer and returns a predetermined food type
+        public static int validateFoodGroup (string  value)
+        {
+            int temp = Validation.validateInt(value);
+            while (temp < 1 || temp > 7)
+            {
+                Console.WriteLine("\n Invalid option entered for food group, please enter a value between 1 and 7");
+                temp = Validation.validateInt(Console.ReadLine());
+            }
+            return temp;
+        }
+
         //Accepts a string and only exits once yes or no has been typed
         //Returns a yes or no string only
         public static string returnYesNo(string input)
@@ -91,7 +103,7 @@ namespace ST10204902_PROG6211_POE
 
             while (test < 1 || test > 4)
             {
-                Console.WriteLine("\nInvalid option entered, please try again");
+                Console.WriteLine("\nInvalid option entered for menu selection, please try again");
                 test = Validation.validateInt(Console.ReadLine());
             }
 

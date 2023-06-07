@@ -36,6 +36,7 @@ namespace ST10204902_PROG6211_POE
         {
         }
 
+        
         public void multiplyRecipe(int option) 
         {
             

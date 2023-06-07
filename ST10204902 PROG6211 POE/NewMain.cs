@@ -179,7 +179,7 @@ namespace ST10204902_PROG6211_POE
 
             }
 
-            
+            Console.WriteLine(r.toString());
 
             //Prompt the user to revert changes and validate entry
             Console.WriteLine("\nWould you like to return to the original recipe values? (yes/no)");
@@ -266,9 +266,44 @@ namespace ST10204902_PROG6211_POE
                 Console.Clear();
 
                 //Prompt the user to enter the food group and validate the string entry
-                Console.WriteLine($"Please enter the food group of the ingredient {i + 1}: ");
-                Console.WriteLine("Example: Starch, Vegetable, Animal Products");
-                ing.FoodGroup = Validation.validateString(Console.ReadLine());
+                Console.WriteLine($"Please enter the number for the corresponding food group of  ingredient {i + 1}: ");
+                Console.WriteLine("Food groups are a categorisation of different foods");
+                Console.WriteLine("The different food groups are: ");
+                Console.WriteLine("1) Starchy foods (Eg: Rice, potatoes)");
+                Console.WriteLine("2) Vegetables and Fruits (Eg: Apples, carrots, spinach, broccoli");
+                Console.WriteLine("3) Legumes (Eg: Chickpeas, soy beans");
+                Console.WriteLine("4) Meat products (Eg: Chicken, beef, eggs");
+                Console.WriteLine("5) Dairy products (Eg: Milk, yoghurt, cheese");
+                Console.WriteLine("6) Fats (Oil, butter)");
+                Console.WriteLine("7) Water");
+
+                //HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                int foodGroupSelection = Validation.validateFoodGroup(Validation.validateString(Console.ReadLine()));
+                switch(foodGroupSelection)
+                {
+                    case 1:
+                        ing.FoodGroup = "Starchy foods";
+                        break;
+                    case 2:
+                        ing.FoodGroup = "Vegetable and Fruits";
+                        break;
+                    case 3:
+                        ing.FoodGroup = "Legumes";
+                        break;
+                    case 4:
+                        ing.FoodGroup = "Meat products";
+                        break;
+                    case 5:
+                        ing.FoodGroup = "Dairy products";
+                        break;
+                    case 6:
+                        ing.FoodGroup = "Fats";
+                        break;
+                    case 7:
+                        ing.FoodGroup = "Water";
+                        break;
+                }
+                
 
                 //Clear console to declutter
                 Console.Clear();

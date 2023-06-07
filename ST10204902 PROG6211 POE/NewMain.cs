@@ -151,7 +151,9 @@ namespace ST10204902_PROG6211_POE
 
             //Duplicate the original recipe to a new object
             Recipe recipeNewQuantity = new Recipe();
+            Recipe recipeOriginalQuantity = new Recipe();
             recipeNewQuantity = r;
+            recipeOriginalQuantity = r;
 
 
             Console.Clear() ;
@@ -170,10 +172,10 @@ namespace ST10204902_PROG6211_POE
             if(confirmClear.Equals("yes"))
             {
                 Console.WriteLine("Waiting here");
-                Console.WriteLine(r.ToString());
+                Console.WriteLine(recipeOriginalQuantity.ToString());
                 Console.WriteLine(recipeNewQuantity.ToString());
                 Console.ReadLine();
-                ViewRecipe(r , recipeSelectedNum);
+                ViewRecipe(recipeOriginalQuantity , recipeSelectedNum);
             }
             else
             {

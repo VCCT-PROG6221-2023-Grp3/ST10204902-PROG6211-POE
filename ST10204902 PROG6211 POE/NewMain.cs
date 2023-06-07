@@ -33,7 +33,7 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
-        private static bool MainMenu()
+        private static bool MainMenu() //The main menu of the application which will allow the user to navigate to other menus or prompts.
         {
             Console.Clear();
             Console.WriteLine("Choose an option:");
@@ -146,6 +146,8 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
+        //Prompts the user to manipulate the quantity and calories of the Recipe by a factor
+        //If the user wishes to revert the changes, they can do so by following the reversion prompts
         private static void ScalePrompt(Recipe r, int recipeSelectedNum)
         {
             Console.Clear();
@@ -350,7 +352,7 @@ namespace ST10204902_PROG6211_POE
             Console.Clear();
         }
 
-        //If the recipe exceeds 300 calories, the user is prompted
+        
         
     }
 }

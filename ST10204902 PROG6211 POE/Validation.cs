@@ -70,7 +70,7 @@ namespace ST10204902_PROG6211_POE
             return value;
         }
 
-        //accepts an integer and returns a predetermined food type
+        //accepts an integer and returns an integer for a food type that is converted to a string in NewMain
         public static int validateFoodGroup (string  value)
         {
             int temp = Validation.validateInt(value);

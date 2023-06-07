@@ -17,6 +17,7 @@ namespace ST10204902_PROG6211_POE
         private double calories;
         private string foodGroup;
 
+        //Parameterised constructor with all variables included
         public Ingredient(string name, double quantity, string unitOfMeasurement, double calories, string foodGroup)
         {
             this.name = name;
@@ -26,6 +27,7 @@ namespace ST10204902_PROG6211_POE
             this.foodGroup = foodGroup;
         }
 
+        //default constructor to allow empty objects to be created then populated in NewMain.cs
         public Ingredient()
         {
         }

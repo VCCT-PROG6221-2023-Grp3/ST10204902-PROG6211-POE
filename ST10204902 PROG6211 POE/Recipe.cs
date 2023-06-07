@@ -36,46 +36,7 @@ namespace ST10204902_PROG6211_POE
         {
         }
 
-        
-        public void multiplyRecipe(int option) 
-        {
-            
-            switch(option)
-            {
-                
-                case 2:
-                    foreach (Ingredient ingredient in ingredients.ToList())
-                    {
-                        Ingredient temp = ingredient;
-                        temp.Quantity = temp.Quantity * 0.5;
-                        temp.Calories = temp.Calories * 0.5;
-                        ingredients.Remove(ingredient);
-                        ingredients.Add(temp);
-                    }
-                    break;
-                case 3:
-                    foreach (Ingredient ingredient in ingredients.ToList())
-                    {
-                        Ingredient temp = ingredient;
-                        temp.Quantity = temp.Quantity * 2;
-                        temp.Calories = temp.Calories * 2;
-                        ingredients.Remove(ingredient);
-                        ingredients.Add(temp);
-                    }
-                    break;
-                    case 4:
-                    foreach (Ingredient ingredient in ingredients.ToList())
-                    {
-                        Ingredient temp = ingredient;
-                        temp.Quantity = temp.Quantity * 3;
-                        temp.Calories = temp.Calories * 3;
-                        ingredients.Remove(ingredient);
-                        ingredients.Add(temp);
-                    }
-                    break;
-            }
-        }
-
+        //Scales the quantity and calories of this recipe by a factor
         public void multiplyRecipes(double factor)
         {
             originalIngredients = ingredients;
@@ -86,6 +47,7 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
+        //Returns the value of ingredients' quantity and calories to their values prior to scaling
         public void resetRecipes()
         {
             ingredients = originalIngredients;
@@ -99,6 +61,7 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
+        //Calculates the total calories of a recipe by grabbing
         public double calculateTotalCalories()
         {
             delCalorieWarning cl = new delCalorieWarning(CalorieWarning);
@@ -111,6 +74,8 @@ namespace ST10204902_PROG6211_POE
             return total;
         }
         
+        //Original toString that prints a formatted list of the variables in Recipe.
+        //Variables included: Name, Ingredients and their respective printouts, steps and their respective printouts
         public string  toString()
         {
             string temp = "Recipe: " +name;
@@ -131,6 +96,8 @@ namespace ST10204902_PROG6211_POE
             return temp;
         }
 
+        //modified version of toString to fix a bug with scaling
+        //Same functionality as original toString but uses the parameters values for return instead of this Recipe 
         public string ToString(Recipe recipe)
         {
             string temp = "Recipe: " + recipe.name;

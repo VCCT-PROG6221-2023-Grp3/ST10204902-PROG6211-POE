@@ -10,12 +10,12 @@ namespace ST10204902_PROG6211_POE
     
     internal class NewMain
     {
-        public delegate void delCalorieWarning(Recipe r);
+        
         static List <Recipe> Recipes = new List<Recipe>();
         //Start of application
         public static void Main(string[] args)
         {
-            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Welcome to the Recipe Applicaton");
             Console.WriteLine("Would you like to begin? (yes/no)");
 
@@ -106,7 +106,7 @@ namespace ST10204902_PROG6211_POE
         private static void ViewRecipe(Recipe recipe, int recipeSelectedNum) 
         {
             Console.Clear();
-            delCalorieWarning cl = new delCalorieWarning(CalorieWarning);
+            
             
             Console.WriteLine("Recipe "+recipeSelectedNum +":");
             Console.WriteLine(recipe.toString());
@@ -124,8 +124,11 @@ namespace ST10204902_PROG6211_POE
                     
                     break;
                 case 2:
+                    Console.WriteLine("A calorie is a unit of measurement of energy.");
+                    Console.WriteLine("The average human eats 2000 calories a day");
+                    Console.WriteLine("Exceeding your daily caloric intake will result in mass gain");
+                    Console.WriteLine("Eating less than your recommended daily intake may result in weight loss");
                     Console.WriteLine("Total calories for the recipe = " + recipe.calculateTotalCalories() + " calories");
-                    cl(recipe);
                     Console.WriteLine("Press any key to return to the previous menu...");
                     Console.ReadKey();
                     ViewRecipe(recipe, recipeSelectedNum);
@@ -155,20 +158,28 @@ namespace ST10204902_PROG6211_POE
 
             int option = Validation.validateOption(Console.ReadLine());
 
-            //Duplicate the original recipe to a new object
-            Recipe recipeNewQuantity = new Recipe();
-            Recipe recipeOriginalQuantity = new Recipe();
-            recipeNewQuantity = r;
-            recipeOriginalQuantity = r;
-
-
-            Console.Clear() ;
-
-            Console.WriteLine(recipeNewQuantity.toString());
+            
 
             //Multiply the recipe values
-            recipeNewQuantity.multiplyRecipe(option);
-            Console.WriteLine(recipeNewQuantity.toString());
+            
+            switch(option)
+            {
+                case 1:
+                    r.multiplyRecipes(1);
+                    break;
+                case 2:
+                    r.multiplyRecipes(0.5);
+                    break;
+                case 3:
+                    r.multiplyRecipes(2);
+                    break;
+                case 4:
+                    r.multiplyRecipes(3);
+                    break;
+
+            }
+
+            
 
             //Prompt the user to revert changes and validate entry
             Console.WriteLine("\nWould you like to return to the original recipe values? (yes/no)");
@@ -179,20 +190,14 @@ namespace ST10204902_PROG6211_POE
             if(confirmClear.Equals("yes"))
             {
                 Console.WriteLine("Waiting here");
-                Console.WriteLine(recipeOriginalQuantity.ToString());
-                Console.WriteLine(recipeNewQuantity.ToString());
-                Console.ReadLine();
-                ViewRecipe(recipeOriginalQuantity , recipeSelectedNum);
+                r.resetRecipes();
+                
+                
+                ViewRecipe(r , recipeSelectedNum);
             }
             else
             {
-                RemoveRecipe(r);
-                Recipes.Add(recipeNewQuantity);
-
-                Console.WriteLine("Waitinng there");
-                Console.WriteLine(recipeNewQuantity.toString() );
-                Console.ReadLine() ;
-                ViewRecipe(recipeNewQuantity, recipeSelectedNum);
+                ViewRecipe(r, recipeSelectedNum);
             }
 
         }
@@ -204,8 +209,14 @@ namespace ST10204902_PROG6211_POE
 
         //Removes a recipe from the recipes 
         private static void RemoveRecipe(Recipe recipe)
-        { 
-            Recipes.Remove(recipe); 
+        {
+            Console.Clear(); 
+            Console.WriteLine("Are you sure you want to delete the recipe: " +recipe.Name +"?");
+
+            if(Validation.returnYesNo(Validation.validateString(Console.ReadLine())).Equals("yes"))
+            {
+                Recipes.Remove(recipe);
+            }
         }
         
         //Transferred recipe prompts from POE part 1
@@ -305,12 +316,6 @@ namespace ST10204902_PROG6211_POE
         }
 
         //If the recipe exceeds 300 calories, the user is prompted
-        public static void CalorieWarning(Recipe r)
-        {
-            if(r.calculateTotalCalories()>300)
-            {
-                Console.WriteLine("Warning: This recipe has over 300 calories");
-            }
-        }
+        
     }
 }

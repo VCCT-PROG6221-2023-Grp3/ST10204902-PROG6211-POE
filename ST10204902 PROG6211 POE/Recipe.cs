@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace ST10204902_PROG6211_POE
 {
+    public delegate void delCalorieWarning(Recipe r);
     public class Recipe
     {
         //Variable declaration
         String name;
         List<Ingredient> ingredients;
+        List<Ingredient> originalIngredients;
         List<String> steps;
 
         //Getters and Setters
@@ -73,18 +75,42 @@ namespace ST10204902_PROG6211_POE
             }
         }
 
+        public void multiplyRecipes(double factor)
+        {
+            originalIngredients = ingredients;
+            foreach(Ingredient ingredient in ingredients.ToList())
+            {
+                ingredient.Quantity *= factor;
+                ingredient.Calories *= factor;
+            }
+        }
+
+        public void resetRecipes()
+        {
+            ingredients = originalIngredients;
+        }
+
+        public static void CalorieWarning(Recipe r)
+        {
+            if (r.calculateTotalCalories() > 300)
+            {
+                Console.WriteLine("Warning: This recipe has over 300 calories");
+            }
+        }
+
         public double calculateTotalCalories()
-        { 
+        {
+            delCalorieWarning cl = new delCalorieWarning(CalorieWarning);
             double total = 0;
             foreach (Ingredient ingredient in ingredients)
             {
                 total += ingredient.Calories;
             }
-            
+            cl(this);
             return total;
         }
-
-        public string toString()
+        
+        public string  toString()
         {
             string temp = "Recipe: " +name;
             temp += "\n______________________________________________________________________________________________________________________________";
@@ -97,6 +123,26 @@ namespace ST10204902_PROG6211_POE
             temp += "\nSteps:";
             int i = 0;
             foreach(string step in Steps)
+            {
+                i++;
+                temp += "\nStep " + i + ": " + step;
+            }
+            return temp;
+        }
+
+        public string ToString(Recipe recipe)
+        {
+            string temp = "Recipe: " + recipe.name;
+            temp += "\n______________________________________________________________________________________________________________________________";
+            temp += "\nIngredients \t\t\t\t| Calories \t\t| Food Group";
+            foreach (Ingredient ingredient in recipe.Ingredients)
+            {
+                temp += "\n - " + ingredient.printIngredient();
+            }
+            temp += "\n______________________________________________________________________________________________________________________________";
+            temp += "\nSteps:";
+            int i = 0;
+            foreach (string step in recipe.Steps)
             {
                 i++;
                 temp += "\nStep " + i + ": " + step;

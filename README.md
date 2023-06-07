@@ -3,7 +3,7 @@
 [Github](https://github.com/VCCT-PROG6221-2023-Grp3/ST10204902-PROG6211-POE)
 
 ## 1A. Installation Instructions
-Download the zip file available on this page or via [this link](https://github.com/VCCT-PROG6221-2023-Grp3/ST10204902-PROG6211-POE/archive/refs/heads/master.zip). Open the file using your preferred archive utility tool like [WinRAR] (https://www.win-rar.com/predownload.html?&L=0) or Windows File Explorer. Extract the folder to your preferred location like your desktop or documents folder. Navigate to ST10204902 PROG6211 POE/bin/Debug to locate the file labelled ST10204902 PROG6211 POE.exe, launch this file by double clicking it.
+Download the zip file available on this page or via [this link](https://github.com/VCCT-PROG6221-2023-Grp3/ST10204902-PROG6211-POE/archive/refs/heads/master.zip). Open the file using your preferred archive utility tool like [WinRAR](https://www.win-rar.com/predownload.html?&L=0) or Windows File Explorer. Extract the folder to your preferred location like your desktop or documents folder. Navigate to ST10204902 PROG6211 POE/bin/Debug to locate the file labelled ST10204902 PROG6211 POE.exe, launch this file by double clicking it.
 
 ## 1B. App Functionality and How To Use It
 

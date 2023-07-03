@@ -19,7 +19,7 @@
         <Label x:Name="lblUnitOfMeasurement" Content="" HorizontalAlignment="Left" Margin="233,100,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCalories" Content="" HorizontalAlignment="Left" Margin="233,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblFoodGroup" Content="" HorizontalAlignment="Left" Margin="233,165,0,0" VerticalAlignment="Top"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="304,424,0,0" VerticalAlignment="Top" Width="46"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="304,424,0,0" VerticalAlignment="Top" Width="46" Click="Button_Click"/>
         <Label Content="Steps:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="listViewSteps" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,271,127,24"/>
 

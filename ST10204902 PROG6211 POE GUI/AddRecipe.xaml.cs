@@ -23,10 +23,21 @@ namespace ST10204902_PROG6211_POE_GUI
     {
         public ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
         public ObservableCollection<String> listSteps = new ObservableCollection<String>();
+        public ObservableCollection<String> listIngredientNames = new ObservableCollection<String>();
         public AddRecipe()
         {
             InitializeComponent();
             listBoxIngredients.ItemsSource = listIngredients;
+            listBoxSteps.ItemsSource = listSteps;
+        }
+
+        public AddRecipe(ObservableCollection<Ingredient> listIngredients, ObservableCollection<String> listSteps)
+        {
+            InitializeComponent();
+            this.listIngredients = listIngredients;
+            this.listSteps = listSteps;
+            updateListOfIngredients();
+            
             listBoxSteps.ItemsSource = listSteps;
         }
 
@@ -50,6 +61,48 @@ namespace ST10204902_PROG6211_POE_GUI
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
+        {
+            AddIngredient addIngredient = new AddIngredient(listIngredients, listSteps);
+            addIngredient.Show();
+            this.Hide();
+        }
+
+        private void updateListOfIngredients()
+        {
+            foreach(Ingredient ingredients in listIngredients)
+            {
+                listIngredientNames.Add(ingredients.Name);
+                
+            }
+            listBoxIngredients.ItemsSource = listIngredientNames;
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if(txbName.Text.Equals("") || listIngredients.Count == 0 ||listSteps.Count == 0)
+                {
+                    MessageBox.Show("Please ensure you have the following:\n" +
+                                "A name entered for the Recipe\n" +
+                                "At least one ingredient added\n" +
+                                "At least one step added");
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please ensure you have the following:\n" +
+                                "A name entered for the Recipe\n" +
+                                "At least one ingredient added\n" +
+                                "At least one step added");
+            }
         }
     }
 }

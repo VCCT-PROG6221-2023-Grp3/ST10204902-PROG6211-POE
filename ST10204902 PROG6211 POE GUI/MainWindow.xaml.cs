@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ST10204902_PROG6211_POE;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +33,13 @@ namespace ST10204902_PROG6211_POE_GUI
             ViewAllRecipes viewAllRecipes = new ViewAllRecipes();
             viewAllRecipes.Show();
             this.Close();
+        }
+
+        private void btnAddRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecipe addRecipe = new AddRecipe();
+            addRecipe.Show();
+            this.Hide();
         }
     }
 }

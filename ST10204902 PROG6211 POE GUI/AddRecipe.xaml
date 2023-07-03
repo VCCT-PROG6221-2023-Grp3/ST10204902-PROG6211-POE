@@ -5,30 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
         mc:Ignorable="d"
-        Title="AddRecipe" Height="450" Width="800">
+        Title="AddRecipe" Height="450" Width="600">
     <Grid>
         <Label x:Name="lblName" Content="Name:" HorizontalAlignment="Left" Margin="28,36,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblIngredient" Content="List of Ingredients:" HorizontalAlignment="Left" Margin="28,76,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="listViewIngredients" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="28,138,634,98">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <Label x:Name="lblSteps" Content="List of Steps:" HorizontalAlignment="Left" Margin="253,81,0,0" VerticalAlignment="Top"/>
-        <ListView x:Name="listViewSteps" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="253,138,409,98">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="87,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAddIngredient" Content="Add a New Ingredient" HorizontalAlignment="Left" Margin="30,107,0,0" VerticalAlignment="Top" Width="136"/>
-        <Button x:Name="btnAddStep" Content="Add a New Step" HorizontalAlignment="Left" Margin="255,107,0,0" VerticalAlignment="Top" Width="136" Click="btnAddStep_Click"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="342,378,0,0" VerticalAlignment="Top" Width="49"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="272,378,0,0" VerticalAlignment="Top" Width="50"/>
+        <Button x:Name="btnAddStep" Content="Add Step" HorizontalAlignment="Left" Margin="427,217,0,0" VerticalAlignment="Top" Width="136" Click="btnAddStep_Click"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="529,388,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="455,388,0,0" VerticalAlignment="Top" Width="50" Click="btnCancel_Click"/>
+        <Label x:Name="lblSteps_Copy" Content="Enter your new step below" HorizontalAlignment="Left" Margin="412,81,0,0" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="txbStep" HorizontalAlignment="Left" Margin="412,128,0,0" TextWrapping="Wrap" Text="Enter your step here" VerticalAlignment="Top" Width="166" Height="70"/>
+        <ListBox x:Name="listBoxIngredients" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="30,156,425,86"/>
+        <ListBox x:Name="listBoxSteps" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="243,156,212,86"/>
 
     </Grid>
 </Window>

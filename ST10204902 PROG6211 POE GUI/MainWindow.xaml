@@ -8,7 +8,7 @@
         Title="MainWindow" Height="165" Width="301">
     <Grid>
         <Button x:Name="btnViewAllRecipes" Content="View All Recipes" HorizontalAlignment="Left" Margin="40,41,0,0" VerticalAlignment="Top" Click="btnViewAllRecipes_Click"/>
-        <Button x:Name="btnAddRecipe" Content="Add a Recipe" HorizontalAlignment="Left" Margin="173,41,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="btnAddRecipe" Content="Add a Recipe" HorizontalAlignment="Left" Margin="173,41,0,0" VerticalAlignment="Top" Width="89" Click="btnAddRecipe_Click"/>
         <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="113,88,0,0" VerticalAlignment="Top" Height="22" Width="64"/>
 
     </Grid>

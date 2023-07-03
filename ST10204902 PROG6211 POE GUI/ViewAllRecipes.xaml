@@ -14,7 +14,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="lblError" Content="" HorizontalAlignment="Left" Margin="347,36,0,0" VerticalAlignment="Top" Height="24" Width="317"/>
+        <Label x:Name="lblError" Content="" HorizontalAlignment="Left" Margin="26,309,0,0" VerticalAlignment="Top" Height="24" Width="317"/>
 
 
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,18 +21,35 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class AddRecipe : Window
     {
-        public List<Ingredient> listIngredients = new List<Ingredient>();
-        public List<String> listSteps = new List<String>();
+        public ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
+        public ObservableCollection<String> listSteps = new ObservableCollection<String>();
         public AddRecipe()
         {
             InitializeComponent();
-            listViewIngredients.ItemsSource = listIngredients;
-            listViewSteps.ItemsSource = listSteps;
+            listBoxIngredients.ItemsSource = listIngredients;
+            listBoxSteps.ItemsSource = listSteps;
         }
 
         private void btnAddStep_Click(object sender, RoutedEventArgs e)
         {
+            if(txbStep.Text.Length == 0 )
+            {
+                MessageBox.Show("Please enter text into the step text box before attempting to add a new step");
+            }
+            else
+            {
+                string temp = txbStep.Text.ToString();
+                listSteps.Add(temp);
+                listBoxSteps.ItemsSource = listSteps;
+            }
 
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

@@ -34,6 +34,8 @@ namespace ST10204902_PROG6211_POE_GUI
         {
             InitializeComponent();
             
+            recipeNames.Clear();
+
             listRecipes = recipes;
             checkRecipes();
             foreach(Recipe recipe in listRecipes)
@@ -56,31 +58,45 @@ namespace ST10204902_PROG6211_POE_GUI
 
         private void listViewRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
-            ObservableCollection<String> listSteps = new ObservableCollection<String>();
-            ObservableCollection<String> listIngredientsName = new ObservableCollection<String>();
-            ObservableCollection<String> listStepsName = new ObservableCollection<String>();
-            
-
-            Recipe r = listRecipes[listViewRecipes.SelectedIndex];
-
-            foreach(var item in r.Ingredients)
+            try
             {
-                listIngredients.Add(item);
-                listIngredientsName.Add(item.Name);
-            }
+                ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
+                ObservableCollection<String> listSteps = new ObservableCollection<String>();
+                ObservableCollection<String> listIngredientsName = new ObservableCollection<String>();
+                ObservableCollection<String> listStepsName = new ObservableCollection<String>();
 
-            foreach(var item in r.Steps)
+
+                MessageBox.Show("" + listViewRecipes.SelectedIndex);
+
+                foreach (var item in listRecipes)
+                {
+                    MessageBox.Show("" + listRecipes.ElementAt<Recipe>(0));
+                }
+
+                Recipe r = listRecipes[listViewRecipes.SelectedIndex];
+
+                foreach (var item in r.Ingredients)
+                {
+                    listIngredients.Add(item);
+                    listIngredientsName.Add(item.Name);
+                }
+
+                foreach (var item in r.Steps)
+                {
+                    listSteps.Add(item);
+                    listStepsName.Add(item.ToString());
+                }
+
+                listViewIngredients.ItemsSource = listIngredientsName;
+                listViewSteps.ItemsSource = listStepsName;
+
+                lblRecipeName.Content = r.Name;
+                listViewIngredients.SelectedIndex = 0;
+            }
+            catch(Exception ex)
             {
-                listSteps.Add(item);
-                listStepsName.Add(item.ToString());
+
             }
-
-            listViewIngredients.ItemsSource = listIngredientsName;
-            listViewSteps.ItemsSource = listStepsName;
-
-            lblRecipeName.Content = r.Name;
-            listViewIngredients.SelectedIndex = 0;
         }
 
         private void listViewIngredients_SelectionChanged(object sender, SelectionChangedEventArgs e)

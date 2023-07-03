@@ -67,7 +67,7 @@ namespace ST10204902_PROG6211_POE_GUI
         {
             AddIngredient addIngredient = new AddIngredient(listIngredients, listSteps);
             addIngredient.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void updateListOfIngredients()

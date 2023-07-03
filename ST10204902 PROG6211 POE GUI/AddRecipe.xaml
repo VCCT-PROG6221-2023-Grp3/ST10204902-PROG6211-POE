@@ -13,7 +13,7 @@
         <TextBox x:Name="txbName" HorizontalAlignment="Left" Margin="87,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAddIngredient" Content="Add a New Ingredient" HorizontalAlignment="Left" Margin="30,107,0,0" VerticalAlignment="Top" Width="136" Click="btnAddIngredient_Click"/>
         <Button x:Name="btnAddStep" Content="Add Step" HorizontalAlignment="Left" Margin="427,217,0,0" VerticalAlignment="Top" Width="136" Click="btnAddStep_Click"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="529,388,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="529,388,0,0" VerticalAlignment="Top" Width="49" Click="btnSubmit_Click"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="455,388,0,0" VerticalAlignment="Top" Width="50" Click="btnCancel_Click"/>
         <Label x:Name="lblSteps_Copy" Content="Enter your new step below" HorizontalAlignment="Left" Margin="412,81,0,0" VerticalAlignment="Top" Width="166"/>
         <TextBox x:Name="txbStep" HorizontalAlignment="Left" Margin="412,128,0,0" TextWrapping="Wrap" Text="Enter your step here" VerticalAlignment="Top" Width="166" Height="70"/>

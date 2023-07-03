@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,21 +23,83 @@ namespace ST10204902_PROG6211_POE_GUI
     
     public partial class ViewAllRecipes : Window
     {
-        public static List<Recipe> Recipes = new List<Recipe>();
+        public static ObservableCollection<Recipe> listRecipes = new ObservableCollection<Recipe>();
+        public static ObservableCollection<String> recipeNames = new ObservableCollection<String>();
         public ViewAllRecipes()
         {
             InitializeComponent();
+        }
+
+        public ViewAllRecipes(ObservableCollection<Recipe> recipes)
+        {
+            InitializeComponent();
+            
+            listRecipes = recipes;
             checkRecipes();
-            listViewRecipes.ItemsSource = Recipes;
+            foreach(Recipe recipe in listRecipes)
+            {
+                recipeNames.Add(recipe.Name);
+            }
+            listViewRecipes.Items.Clear();
+
+            listViewRecipes.ItemsSource = recipeNames;
         }
 
         public void checkRecipes()
         {
-            if(Recipes.Count == 0)
+            if(listRecipes.Count == 0)
             {
                 lblError.Content = "There are no recipes added currently";
                 
             }
+        }
+
+        private void listViewRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
+            ObservableCollection<String> listSteps = new ObservableCollection<String>();
+            ObservableCollection<String> listIngredientsName = new ObservableCollection<String>();
+            ObservableCollection<String> listStepsName = new ObservableCollection<String>();
+            
+
+            Recipe r = listRecipes[listViewRecipes.SelectedIndex];
+
+            foreach(var item in r.Ingredients)
+            {
+                listIngredients.Add(item);
+                listIngredientsName.Add(item.Name);
+            }
+
+            foreach(var item in r.Steps)
+            {
+                listSteps.Add(item);
+                listStepsName.Add(item.ToString());
+            }
+
+            listViewIngredients.ItemsSource = listIngredientsName;
+            listViewSteps.ItemsSource = listStepsName;
+
+            lblRecipeName.Content = r.Name;
+            listViewIngredients.SelectedIndex = 0;
+        }
+
+        private void listViewIngredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Ingredient ing = listRecipes[listViewRecipes.SelectedIndex].Ingredients[listViewIngredients.SelectedIndex];
+
+
+            lblIngredientName.Content = ing.Name;
+            lblQuantity.Content = ing.Quantity;
+            lblUnitOfMeasurement.Content = ing.UnitOfMeasurement;
+            lblFoodGroup.Content = ing.FoodGroup;
+            lblCalories.Content = ing.Calories;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(listRecipes);
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

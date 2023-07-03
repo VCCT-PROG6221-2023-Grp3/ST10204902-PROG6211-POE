@@ -93,7 +93,14 @@ namespace ST10204902_PROG6211_POE_GUI
                 }
                 else
                 {
+                    Recipe r = new Recipe();
+                    r.Name =txbName.Text;
+                    r.Ingredients = listIngredients.ToList<Ingredient>();
+                    r.Steps = listSteps.ToList<String>();
 
+                    MainWindow mainWindow = new MainWindow(r);
+                    mainWindow.Show();
+                    this.Close();
                 }
             }
             catch (Exception ex)

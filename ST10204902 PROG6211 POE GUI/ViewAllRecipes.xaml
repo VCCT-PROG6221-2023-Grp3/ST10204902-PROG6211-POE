@@ -5,16 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
         mc:Ignorable="d"
-        Title="ViewAllRecipes" Height="450" Width="800">
+        Title="ViewAllRecipes" Height="518" Width="963">
     <Grid>
-        <ListView x:Name="listViewRecipes" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,31,487,196">
+        <ListView x:Name="listViewRecipes" Margin="26,66,715,83"  SelectionChanged="listViewRecipes_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+            <Label Content="Label"/>
         </ListView>
         <Label x:Name="lblError" Content="" HorizontalAlignment="Left" Margin="26,309,0,0" VerticalAlignment="Top" Height="24" Width="317"/>
+        <Label Content="List of Recipes" HorizontalAlignment="Left" Margin="26,26,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name of Recipe: " HorizontalAlignment="Left" Margin="333,66,0,0" VerticalAlignment="Top"/>
+        <Label Content="List of Ingredients:" HorizontalAlignment="Left" Margin="333,109,0,0" VerticalAlignment="Top"/>
+        <Label Content="Steps:" HorizontalAlignment="Left" Margin="727,109,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="listViewIngredients" Margin="333,152,491,139" SelectionChanged="listViewIngredients_SelectionChanged"/>
+        <Label x:Name="lblRecipeName" Content="" HorizontalAlignment="Left" Margin="450,66,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="listViewSteps" Margin="727,152,97,139"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="499,151,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblIngredientName" Content="" HorizontalAlignment="Left" Margin="597,151,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantity:" HorizontalAlignment="Left" Margin="499,182,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unit of &#xD;&#xA;Measurement:" HorizontalAlignment="Left" Margin="499,213,0,0" VerticalAlignment="Top"/>
+        <Label Content="Calories:" HorizontalAlignment="Left" Margin="499,260,0,0" VerticalAlignment="Top"/>
+        <Label Content="Food Group:" HorizontalAlignment="Left" Margin="499,291,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblQuantity" Content="" HorizontalAlignment="Left" Margin="597,182,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUnitOfMeasurement" Content="" HorizontalAlignment="Left" Margin="597,225,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCalories" Content="" HorizontalAlignment="Left" Margin="597,264,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblFoodGroup" Content="" HorizontalAlignment="Left" Margin="597,295,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="814,458,0,0" VerticalAlignment="Top" Width="52" Click="btnCancel_Click"/>
 
 
     </Grid>

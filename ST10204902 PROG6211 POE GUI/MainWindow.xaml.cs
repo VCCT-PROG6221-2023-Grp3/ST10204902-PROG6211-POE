@@ -28,9 +28,21 @@ namespace ST10204902_PROG6211_POE_GUI
             InitializeComponent();
         }
 
+        public MainWindow(Recipe recipe)
+        {
+            InitializeComponent();
+            recipes.Add(recipe);
+        }
+
+        public MainWindow(ObservableCollection<Recipe> inRecipes)
+        {
+            InitializeComponent();
+            recipes = inRecipes;
+        }
+
         private void btnViewAllRecipes_Click(object sender, RoutedEventArgs e)
         {
-            ViewAllRecipes viewAllRecipes = new ViewAllRecipes();
+            ViewAllRecipes viewAllRecipes = new ViewAllRecipes(recipes);
             viewAllRecipes.Show();
             this.Close();
         }

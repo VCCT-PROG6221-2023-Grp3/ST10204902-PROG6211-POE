@@ -10,26 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ST10204902_PROG6211_POE;
 
 namespace ST10204902_PROG6211_POE_GUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ViewAllRecipes.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    /// 
+    
+    public partial class ViewAllRecipes : Window
     {
-        public MainWindow()
+        public static List<Recipe> Recipes = new List<Recipe>();
+        public ViewAllRecipes()
         {
             InitializeComponent();
+            checkRecipes();
+            listViewRecipes.ItemsSource = Recipes;
         }
 
-        private void btnViewAllRecipes_Click(object sender, RoutedEventArgs e)
+        public void checkRecipes()
         {
-            ViewAllRecipes viewAllRecipes = new ViewAllRecipes();
-            viewAllRecipes.Show();
-            this.Close();
+            if(Recipes.Count == 0)
+            {
+                lblError.Content = "There are no recipes added currently";
+                
+            }
         }
     }
 }

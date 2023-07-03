@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="165" Width="301">
     <Grid>
-        
+        <Button x:Name="btnViewAllRecipes" Content="View All Recipes" HorizontalAlignment="Left" Margin="40,41,0,0" VerticalAlignment="Top" Click="btnViewAllRecipes_Click"/>
+        <Button x:Name="btnAddRecipe" Content="Add a Recipe" HorizontalAlignment="Left" Margin="173,41,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="113,88,0,0" VerticalAlignment="Top" Height="22" Width="64"/>
+
     </Grid>
 </Window>

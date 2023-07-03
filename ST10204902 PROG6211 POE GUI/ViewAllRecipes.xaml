@@ -1,0 +1,21 @@
+﻿<Window x:Class="ST10204902_PROG6211_POE_GUI.ViewAllRecipes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
+        mc:Ignorable="d"
+        Title="ViewAllRecipes" Height="450" Width="800">
+    <Grid>
+        <ListView x:Name="listViewRecipes" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,31,487,196">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lblError" Content="" HorizontalAlignment="Left" Margin="347,36,0,0" VerticalAlignment="Top" Height="24" Width="317"/>
+
+
+    </Grid>
+</Window>

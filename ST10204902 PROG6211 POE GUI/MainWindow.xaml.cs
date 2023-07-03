@@ -53,5 +53,11 @@ namespace ST10204902_PROG6211_POE_GUI
             addRecipe.Show();
             this.Hide();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Thank you for using my Application");
+            Environment.Exit(0);
+        }
     }
 }

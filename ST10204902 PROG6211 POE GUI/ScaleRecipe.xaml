@@ -1,0 +1,27 @@
+﻿<Window x:Class="ST10204902_PROG6211_POE_GUI.ScaleRecipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
+        mc:Ignorable="d"
+        Title="Window1" Height="484" Width="375">
+    <Grid>
+        <ListBox x:Name="listViewIngredients" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,55,249,247" SelectionChanged="listViewIngredients_SelectionChanged"/>
+        <Label Content="Scaled Recipe: " HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="143,40,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantity:" HorizontalAlignment="Left" Margin="143,66,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unit of &#xD;&#xA;Measurement:" HorizontalAlignment="Left" Margin="143,92,0,0" VerticalAlignment="Top"/>
+        <Label Content="Calories:" HorizontalAlignment="Left" Margin="143,134,0,0" VerticalAlignment="Top"/>
+        <Label Content="Food Group:" HorizontalAlignment="Left" Margin="143,160,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="233,40,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblQuantity" Content="" HorizontalAlignment="Left" Margin="233,71,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUnitOfMeasurement" Content="" HorizontalAlignment="Left" Margin="233,100,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCalories" Content="" HorizontalAlignment="Left" Margin="233,139,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblFoodGroup" Content="" HorizontalAlignment="Left" Margin="233,165,0,0" VerticalAlignment="Top"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="304,424,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label Content="Steps:" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="listViewSteps" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,271,127,24"/>
+
+    </Grid>
+</Window>

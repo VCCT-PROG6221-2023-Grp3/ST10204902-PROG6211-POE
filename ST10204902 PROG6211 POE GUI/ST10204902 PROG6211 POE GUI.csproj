@@ -65,6 +65,9 @@
     <Compile Include="ViewAllRecipes.xaml.cs">
       <DependentUpon>ViewAllRecipes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScaleRecipe.xaml.cs">
+      <DependentUpon>ScaleRecipe.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddIngredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ViewAllRecipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScaleRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

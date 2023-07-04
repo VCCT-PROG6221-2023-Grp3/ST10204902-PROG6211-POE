@@ -29,7 +29,7 @@ namespace ST10204902_PROG6211_POE_GUI
         public ObservableCollection<String> listStepsName = new ObservableCollection<String>();
         ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
         ObservableCollection<String> listSteps = new ObservableCollection<String>();
-
+        ObservableCollection<Recipe> filteredRecipe = new ObservableCollection<Recipe>();
         public ViewAllRecipes()
         {
             InitializeComponent();
@@ -43,12 +43,32 @@ namespace ST10204902_PROG6211_POE_GUI
 
             listRecipes = recipes;
             checkRecipes();
+
             foreach(Recipe recipe in listRecipes)
             {
                 recipeNames.Add(recipe.Name);
             }
+
             listViewRecipes.Items.Clear();
 
+            listViewRecipes.ItemsSource = recipeNames;
+        }
+
+        public ViewAllRecipes(ObservableCollection<Recipe> passFilteredRecipes, ObservableCollection<Recipe> originalRecipes)
+        {
+            InitializeComponent();
+            recipeNames.Clear();
+
+            filteredRecipe = passFilteredRecipes;
+            listRecipes = originalRecipes;
+
+            checkRecipes();
+            foreach (Recipe recipe in filteredRecipe)
+            {
+                recipeNames.Add(recipe.Name);
+            }
+
+            listViewRecipes.Items.Clear();
             listViewRecipes.ItemsSource = recipeNames;
         }
 
@@ -63,6 +83,10 @@ namespace ST10204902_PROG6211_POE_GUI
 
         private void listViewRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            listIngredients.Clear();
+            listSteps.Clear();
+            listIngredientsName.Clear();
+            listStepsName.Clear();
             try
             {
                
@@ -99,6 +123,7 @@ namespace ST10204902_PROG6211_POE_GUI
         private void listViewIngredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+
 
             try
             {
@@ -183,6 +208,29 @@ namespace ST10204902_PROG6211_POE_GUI
         private void btnScaleRecipeByThree_Click(object sender, RoutedEventArgs e)
         {
             RecipeScaling(3);
+        }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            Filter filter = new Filter(listRecipes);
+            filter.Show();
+            this.Close();
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            recipeNames.Clear();
+
+            checkRecipes();
+
+            foreach (Recipe recipe in listRecipes)
+            {
+                recipeNames.Add(recipe.Name);
+            }
+
+            listViewRecipes.Items.Clear();
+
+            listViewRecipes.ItemsSource = recipeNames;
         }
     }
 }

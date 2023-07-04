@@ -38,6 +38,8 @@
         <Button x:Name="btnScaleRecipeByHalf" Content="Scale Recipe by Half" HorizontalAlignment="Left" Margin="504,333,0,0" VerticalAlignment="Top" Width="149" Click="btnScaleRecipeByHalfMethod"/>
         <Button x:Name="btnScaleRecipeByTwo" Content="Scale Recipe by Two" HorizontalAlignment="Left" Margin="504,358,0,0" VerticalAlignment="Top" Width="149" Click="btnScaleRecipeByTwo_Click"/>
         <Button x:Name="btnScaleRecipeByThree" Content="Scale Recipe by Three" HorizontalAlignment="Left" Margin="504,383,0,0" VerticalAlignment="Top" Width="149" Click="btnScaleRecipeByThree_Click"/>
+        <Button x:Name="btnFilter" Content="Filter" HorizontalAlignment="Left" Margin="34,443,0,0" VerticalAlignment="Top" Width="54" Click="btnFilter_Click"/>
+        <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Margin="106,443,0,0" VerticalAlignment="Top" Width="47" Click="btnReset_Click"/>
 
 
     </Grid>

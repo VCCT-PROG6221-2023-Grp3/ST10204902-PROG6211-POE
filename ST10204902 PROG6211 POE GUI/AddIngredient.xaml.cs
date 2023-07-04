@@ -21,11 +21,14 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class AddIngredient : Window
     {
+        //Variable declarations
         ObservableCollection<String> foodGroups = new ObservableCollection<String>();
         public ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
         public ObservableCollection<String> listSteps = new ObservableCollection<String>();
         public static Ingredient ingredient = new Ingredient();
 
+        //Parameterised constructor that accepts two ObservableCollections
+        //Then fills the ComboBox with all Food Group options
         public AddIngredient(ObservableCollection<Ingredient> listIngredients, ObservableCollection<String> steps)
         {
             InitializeComponent();
@@ -43,6 +46,10 @@ namespace ST10204902_PROG6211_POE_GUI
             this.listSteps = steps;
         }
 
+        //Submit button event
+        //Tries to validate all inputs as strings or doubles to then populate an ingredient
+        //The ingredient is then passed to the AddRecipe constructor
+        //Throw an error if data is invalid or strings empty
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try

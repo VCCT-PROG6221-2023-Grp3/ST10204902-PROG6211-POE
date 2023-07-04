@@ -23,6 +23,9 @@ namespace ST10204902_PROG6211_POE_GUI
     
     public partial class ViewAllRecipes : Window
     {
+        //Variable declarations
+        //ObservableCollections of custom classes such as Recipe are used to store all data regarding a recipe
+        //ObservableCollections of strings are linked to each custom class ObservableCollection for display in lists
         public static ObservableCollection<Recipe> listRecipes = new ObservableCollection<Recipe>();
         public static ObservableCollection<String> recipeNames = new ObservableCollection<String>();
         public ObservableCollection<String> listIngredientsName = new ObservableCollection<String>();
@@ -30,11 +33,14 @@ namespace ST10204902_PROG6211_POE_GUI
         ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
         ObservableCollection<String> listSteps = new ObservableCollection<String>();
         ObservableCollection<Recipe> filteredRecipe = new ObservableCollection<Recipe>();
+
+        //Default constructor
         public ViewAllRecipes()
         {
             InitializeComponent();
         }
 
+        //Parameterised constructor that accepts an ObservableCollection of Recipes to populate the name ObservableCollections
         public ViewAllRecipes(ObservableCollection<Recipe> recipes)
         {
             InitializeComponent();
@@ -54,6 +60,8 @@ namespace ST10204902_PROG6211_POE_GUI
             listViewRecipes.ItemsSource = recipeNames;
         }
 
+        //Parameterised constructor designed for the filter to allow users to reset.
+        //Accepts an ObservableCollection of Recipes to populate the name ObservableCollections as well as the original list to allow reset
         public ViewAllRecipes(ObservableCollection<Recipe> passFilteredRecipes, ObservableCollection<Recipe> originalRecipes)
         {
             InitializeComponent();
@@ -72,6 +80,8 @@ namespace ST10204902_PROG6211_POE_GUI
             listViewRecipes.ItemsSource = recipeNames;
         }
 
+        //private helper method to check recipe list length
+        //If the list is 0 recipes long, display a label with a message
         public void checkRecipes()
         {
             if(listRecipes.Count == 0)
@@ -81,6 +91,7 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //When a user selects a recipe within a list, it grabs the recipe and populates the ingredient and step lists
         private void listViewRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listIngredients.Clear();
@@ -89,10 +100,6 @@ namespace ST10204902_PROG6211_POE_GUI
             listStepsName.Clear();
             try
             {
-               
-                
-
-
                 Recipe r = listRecipes[listViewRecipes.SelectedIndex];
 
                 foreach (var item in r.Ingredients)
@@ -120,11 +127,9 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //When a user selects an ingredient it populates the labels next to the listViewBox with the selected ingredients info
         private void listViewIngredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-
-
             try
             {
                 Ingredient ing = listRecipes[listViewRecipes.SelectedIndex].Ingredients[listViewIngredients.SelectedIndex];
@@ -142,6 +147,7 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //Returns the user to the previous menu
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow(listRecipes);
@@ -149,6 +155,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+        //Deletes the recipe at the selected index after confirming with the user
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if(listViewRecipes.SelectedIndex == -1)
@@ -170,6 +177,7 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //private helper method to reset all labels and viewListBoxes between selections and restarting of the window
         private void resetLabelsAndViews()
         {
             lblRecipeName.Content = "";
@@ -182,6 +190,7 @@ namespace ST10204902_PROG6211_POE_GUI
             listStepsName.Clear();
         }
 
+        //private helper to reduce redundant code
         private void RecipeScaling(double factor)
         {
             try
@@ -210,6 +219,7 @@ namespace ST10204902_PROG6211_POE_GUI
             RecipeScaling(3);
         }
 
+        //Opens the filter window and passes the list of recipes
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
             Filter filter = new Filter(listRecipes);
@@ -217,6 +227,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+        //returns the recipe list to its previous values before filtering
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             recipeNames.Clear();

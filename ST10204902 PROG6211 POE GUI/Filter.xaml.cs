@@ -21,14 +21,19 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class Filter : Window
     {
+        //Variable declarations
         ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         ObservableCollection<Recipe> filteredRecipes = new ObservableCollection<Recipe>();
         ObservableCollection<String> foodGroups = new ObservableCollection<String>();
+        
+        //Default constructor
         public Filter()
         {
             InitializeComponent();
         }
 
+        //parameterised constructor that accepts an ObservableCollection of recipes from the View All Recipes Window
+        //Updates the combobox with all foodgroup values
         public Filter(ObservableCollection<Recipe> passedRecipes)
         {
             InitializeComponent();
@@ -45,6 +50,11 @@ namespace ST10204902_PROG6211_POE_GUI
             cmbFoodGroup.ItemsSource = foodGroups;
         }
 
+        //Filter ingredient button event
+        //If the user has entered nothing, prompt them with an error
+        //If the user has input a valid ingredient and a result is found, return to View All Recipes
+        //If the user has entered a valid input but no recipes are found, display an error
+        
         private void btnFilterIngredient_Click(object sender, RoutedEventArgs e)
         {
             if(txbIngredientSearch.Text.Trim().Length == 0)
@@ -69,6 +79,9 @@ namespace ST10204902_PROG6211_POE_GUI
             
         }
 
+        //private helped method that checks a new ObservableCollection that is only populated with valid entries
+        //against the users filter request
+        //If there are no recipes added to the filteredRecipe list, display an error
         private void errorHandling()
         {
             if (filteredRecipes.Count == 0)
@@ -83,6 +96,7 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //returns the user to the previous menu with all original recipes
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             ViewAllRecipes viewAllRecipes = new ViewAllRecipes(recipes);
@@ -90,6 +104,9 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+        //Determines which food group has been selected then attempts to filter the recipes list against that value
+        //If there are no ingredients with the food group selected, displayt an error
+        //If it is successful, add recipes with valid ingredient food groups to new list and open View All Recipes with the filtered list
         private void btnFilterFoodGroup_Click(object sender, RoutedEventArgs e)
         {
             int selection = cmbFoodGroup.SelectedIndex;
@@ -135,6 +152,10 @@ namespace ST10204902_PROG6211_POE_GUI
             errorHandling();
         }
 
+        //Takes the users input and compares all recipe total calories against it
+        //If the user enters a value lower than any recipe, no recipes will appear
+        //If the user enters an appropriate value the filteredRecipe list will be populated with valid
+        //recipes and View All Recipes with the filtered list will be opened
         private void btnFilterCalories_Click(object sender, RoutedEventArgs e)
         {
             try

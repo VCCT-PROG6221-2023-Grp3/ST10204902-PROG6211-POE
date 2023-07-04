@@ -22,11 +22,16 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Variable declarations
         public static ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
+        
+        //default constructor for first launch
         public MainWindow()
         {
             InitializeComponent();
         }
+        
+        //parameterised constructor that allows for recipes to be passed and added to the list
 
         public MainWindow(Recipe recipe)
         {
@@ -34,12 +39,14 @@ namespace ST10204902_PROG6211_POE_GUI
             recipes.Add(recipe);
         }
 
+        //parameterised constructor that accepts an ObservableCollection to maintain data between windows
         public MainWindow(ObservableCollection<Recipe> inRecipes)
         {
             InitializeComponent();
             recipes = inRecipes;
         }
 
+        //Opens the View All Recipes window and passes all recipes to it
         private void btnViewAllRecipes_Click(object sender, RoutedEventArgs e)
         {
             ViewAllRecipes viewAllRecipes = new ViewAllRecipes(recipes);
@@ -47,6 +54,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+        //Opens the Add Recipe window, passing no variables
         private void btnAddRecipe_Click(object sender, RoutedEventArgs e)
         {
             AddRecipe addRecipe = new AddRecipe();
@@ -54,6 +62,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Hide();
         }
 
+        //Closes the application after thanking the user for using the application
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Thank you for using my Application");

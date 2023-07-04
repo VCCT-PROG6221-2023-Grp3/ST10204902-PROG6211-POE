@@ -21,12 +21,14 @@ namespace ST10204902_PROG6211_POE_GUI
     /// </summary>
     public partial class ScaleRecipe : Window
     {
+        //Variable declarations
         String name = "";
         ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>();
         ObservableCollection<String> steps = new ObservableCollection<String>();
         ObservableCollection<String> ingredientNames = new ObservableCollection<String>();
         double factor = 0;
 
+        //Parameterised constructor that accepts all Recipe information and updates the listviewbox with the data
         public ScaleRecipe(String passName, ObservableCollection<Ingredient> passIngredients, ObservableCollection<String> passSteps, double passFactor)
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace ST10204902_PROG6211_POE_GUI
             listViewSteps.ItemsSource = steps;
         }
 
+        //Updates the labels in the window with the values at the selected index
         private void listViewIngredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -69,6 +72,7 @@ namespace ST10204902_PROG6211_POE_GUI
             }
         }
 
+        //Closes the window
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -25,6 +25,8 @@ namespace ST10204902_PROG6211_POE_GUI
         public ObservableCollection<String> listSteps = new ObservableCollection<String>();
         public ObservableCollection<String> listIngredientNames = new ObservableCollection<String>();
         public int stepCount = 0;
+
+        //Generic constructor for first time application launch
         public AddRecipe()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace ST10204902_PROG6211_POE_GUI
             stepCount = 0;
         }
 
+        //Parameterised constructor to allow data control between opening and closing of windows
         public AddRecipe(ObservableCollection<Ingredient> listIngredients, ObservableCollection<String> listSteps)
         {
             InitializeComponent();
@@ -43,6 +46,7 @@ namespace ST10204902_PROG6211_POE_GUI
             listBoxSteps.ItemsSource = listSteps;
         }
 
+        //Takes the string value from the text box labeled txbStep and adds it to an ObservableCollection<String> to display in the list
         private void btnAddStep_Click(object sender, RoutedEventArgs e)
         {
             if(txbStep.Text.Length == 0 )
@@ -60,6 +64,7 @@ namespace ST10204902_PROG6211_POE_GUI
 
         }
 
+        //Returns the user to the previous menu
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
@@ -67,6 +72,8 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+
+        //Opens the AddIngredient Window and passes the ObservableCollection of ingredients and steps
         private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
         {
             AddIngredient addIngredient = new AddIngredient(listIngredients, listSteps);
@@ -74,6 +81,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.Close();
         }
 
+        //Private helped method that updates the ingredients within a list
         private void updateListOfIngredients()
         {
             foreach(Ingredient ingredients in listIngredients)
@@ -84,6 +92,7 @@ namespace ST10204902_PROG6211_POE_GUI
             listBoxIngredients.ItemsSource = listIngredientNames;
         }
 
+        //Checks if a user has input all data then adds the data to a list, the list is then passed to MainWindow
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             try

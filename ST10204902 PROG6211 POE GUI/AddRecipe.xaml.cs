@@ -24,11 +24,13 @@ namespace ST10204902_PROG6211_POE_GUI
         public ObservableCollection<Ingredient> listIngredients = new ObservableCollection<Ingredient>();
         public ObservableCollection<String> listSteps = new ObservableCollection<String>();
         public ObservableCollection<String> listIngredientNames = new ObservableCollection<String>();
+        public int stepCount = 0;
         public AddRecipe()
         {
             InitializeComponent();
             listBoxIngredients.ItemsSource = listIngredients;
             listBoxSteps.ItemsSource = listSteps;
+            stepCount = 0;
         }
 
         public AddRecipe(ObservableCollection<Ingredient> listIngredients, ObservableCollection<String> listSteps)
@@ -37,7 +39,7 @@ namespace ST10204902_PROG6211_POE_GUI
             this.listIngredients = listIngredients;
             this.listSteps = listSteps;
             updateListOfIngredients();
-            
+            stepCount = 0;
             listBoxSteps.ItemsSource = listSteps;
         }
 
@@ -49,7 +51,9 @@ namespace ST10204902_PROG6211_POE_GUI
             }
             else
             {
-                string temp = txbStep.Text.ToString();
+                
+                stepCount++;
+                string temp = stepCount+") " +txbStep.Text.ToString();
                 listSteps.Add(temp);
                 listBoxSteps.ItemsSource = listSteps;
             }

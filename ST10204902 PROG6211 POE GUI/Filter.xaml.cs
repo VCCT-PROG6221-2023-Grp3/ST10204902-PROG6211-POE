@@ -73,7 +73,7 @@ namespace ST10204902_PROG6211_POE_GUI
         {
             if (filteredRecipes.Count == 0)
             {
-                MessageBox.Show("There are no recipes with mentioned ingredients");
+                MessageBox.Show("There are no recipes with specified values");
             }
             else
             {
@@ -141,13 +141,7 @@ namespace ST10204902_PROG6211_POE_GUI
             {
                 double maxCalories = int.Parse(txbMaxCalories.Text);
                 double testCalories = 0;
-                /*foreach(Recipe r in recipes)
-                {
-                    foreach(Ingredient i in r.Ingredients)
-                    {
-                        maxCalories += i.Calories;
-                    }
-                }*/
+                
 
                 foreach (Recipe r in recipes)
                 {

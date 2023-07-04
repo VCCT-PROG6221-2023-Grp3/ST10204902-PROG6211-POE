@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ST10204902_PROG6211_POE_GUI"
         mc:Ignorable="d"
-        Title="Filter" Height="214" Width="258">
+        Title="Filter" Height="231" Width="283">
     <Grid>
         <TabControl>
             <TabItem Header="Ingredient">
@@ -30,7 +30,7 @@
             </TabItem>
             <TabItem Header="Calories" Margin="-2,-2,-2,0">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnFilterCalories" Content="Filter" HorizontalAlignment="Left" Margin="192,138,0,0" VerticalAlignment="Top" Width="43"/>
+                    <Button x:Name="btnFilterCalories" Content="Filter" HorizontalAlignment="Left" Margin="192,138,0,0" VerticalAlignment="Top" Width="43" Click="btnFilterCalories_Click"/>
                     <Button x:Name="btnCancelCalories" Content="Cancel" HorizontalAlignment="Left" Margin="126,138,0,0" VerticalAlignment="Top" Width="49" Click="btnCancel_Click"/>
                     <TextBox x:Name="txbMaxCalories" HorizontalAlignment="Left" Margin="23,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="191"/>
                     <Label Content="Enter the maximum number of &#xD;&#xA;calories in a Recipe:" HorizontalAlignment="Left" Margin="23,22,0,0" VerticalAlignment="Top"/>

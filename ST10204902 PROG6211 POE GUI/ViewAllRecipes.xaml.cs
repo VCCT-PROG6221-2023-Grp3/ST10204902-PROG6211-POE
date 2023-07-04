@@ -228,7 +228,7 @@ namespace ST10204902_PROG6211_POE_GUI
                 recipeNames.Add(recipe.Name);
             }
 
-            listViewRecipes.Items.Clear();
+           
 
             listViewRecipes.ItemsSource = recipeNames;
         }

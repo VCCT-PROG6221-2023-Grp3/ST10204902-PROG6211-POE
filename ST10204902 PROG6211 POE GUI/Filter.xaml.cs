@@ -134,5 +134,43 @@ namespace ST10204902_PROG6211_POE_GUI
             }
             errorHandling();
         }
+
+        private void btnFilterCalories_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                double maxCalories = int.Parse(txbMaxCalories.Text);
+                double testCalories = 0;
+                /*foreach(Recipe r in recipes)
+                {
+                    foreach(Ingredient i in r.Ingredients)
+                    {
+                        maxCalories += i.Calories;
+                    }
+                }*/
+
+                foreach (Recipe r in recipes)
+                {
+                    testCalories = 0;
+                    foreach(Ingredient i in r.Ingredients)
+                    {
+                        testCalories += i.Calories;
+                    }
+                    
+                    if(testCalories <= maxCalories)
+                    {
+                        filteredRecipes.Add(r);
+                    }
+                }
+                MessageBox.Show("Test Calories: " + testCalories +"\n" +
+                    "Max Calories: "+maxCalories);
+                
+                errorHandling();
+            }
+            catch 
+            {
+                MessageBox.Show("Please enter a valid number");
+            }
+        }
     }
 }

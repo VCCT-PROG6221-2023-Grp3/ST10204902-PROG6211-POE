@@ -51,3 +51,8 @@ Please feel free to comment on the work and make pull requests. Open an issue ti
 2. Error handling fell short on the previous submission. To rectify this, certain validation prompts included new details on what is missing in a users submitted input.
 3. App functionality was overrall strong but fell short on menu management. With the part 2 submission, the main console class was rewritten in the style of a number-based menu. 
 4. Additional detail on installation was added to the readme to address the information requirement for the rubric.
+
+## 7. Updates after POE 2
+1. Changed from a console application to a GUI based application
+2. Fixed validation by using context specific WPF controls such as ComboBoxes for FoodGroup
+3. Included a manual to describe use cases for the application
